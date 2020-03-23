@@ -22,6 +22,7 @@ namespace Lab04_TicTacToe.Classes
 			PlayerOne = p1;
 			PlayerTwo = p2;
 			Board = new Board();
+			
 		}
 
 		/// <summary>
@@ -30,7 +31,38 @@ namespace Lab04_TicTacToe.Classes
 		/// <returns>Winner</returns>
 		public Player Play()
 		{
+			string[,] board = Board.GameBoard;
+			int counter = 0;
+            Board.DisplayBoard();
 
+		
+				while (counter <= 9 && CheckForWinner(Board) == false)
+				{
+					Player nextPlayer = NextPlayer();
+					nextPlayer.TakeTurn(Board);
+				    Board.DisplayBoard();
+					SwitchPlayer();
+					counter++;
+				}
+            if (CheckForWinner(Board) == true)
+            {
+				if (PlayerOne.IsTurn == true) {
+					Winner = PlayerOne;
+				}
+                else if
+                    (PlayerTwo.IsTurn == true)
+                {
+					Winner = PlayerTwo;
+                }
+            }
+            if (counter == 9)
+            {
+				Console.WriteLine("its a draw");
+				return Winner;
+            }
+            Console.WriteLine($"{Winner} is the winner!");
+				return Winner;
+			
 			//TODO: Complete this method and utilize the rest of the class structure to play the game.
 
             /*
@@ -87,7 +119,7 @@ namespace Lab04_TicTacToe.Classes
 			
 			}
 
-			return false;
+			//return false;
 		}
 
 
