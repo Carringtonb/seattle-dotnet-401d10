@@ -3,7 +3,7 @@ using Lab04_TicTacToe.Classes;
 
 namespace Lab04_TicTacToe
 {
-    class Program
+   public class Program
     {
         static void Main(string[] args)
         {
@@ -11,7 +11,7 @@ namespace Lab04_TicTacToe
             PlayerName();
         }
           
-    static void PlayerName()
+    public static void PlayerName()
     {
        Console.WriteLine("Please Enter Your Name");
        string playerOneName = Console.ReadLine();
