@@ -12,4 +12,9 @@
   <ItemGroup>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="XUnitTestTicTacToe\obj\XUnitTestTicTacToe.csproj.nuget.dgspec.json" />
+    <None Remove="XUnitTestTicTacToe\obj\Debug\netcoreapp3.1\XUnitTestTicTacToe.assets.cache" />
+    <None Remove="XUnitTestTicTacToe\obj\Debug\netcoreapp3.1\XUnitTestTicTacToe.csprojAssemblyReference.cache" />
+  </ItemGroup>
 </Project>

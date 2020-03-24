@@ -33,52 +33,27 @@ namespace Lab04_TicTacToe.Classes
 		{
 			string[,] board = Board.GameBoard;
 			int counter = 0;
-            Board.DisplayBoard();
+            //Board.DisplayBoard();
 
+               
 		
-				while (counter <= 9 && CheckForWinner(Board) == false)
+				while (counter < 9 && !CheckForWinner(Board))
 				{
+				    Board.DisplayBoard();
 					Player nextPlayer = NextPlayer();
 					nextPlayer.TakeTurn(Board);
-				    Board.DisplayBoard();
 					SwitchPlayer();
 					counter++;
 				}
-            if (CheckForWinner(Board) == true)
-            {
-				if (PlayerOne.IsTurn == true) {
-					Winner = PlayerOne;
-				}
-                else if
-                    (PlayerTwo.IsTurn == true)
-                {
-					Winner = PlayerTwo;
-                }
-            }
+
             if (counter == 9)
             {
 				Console.WriteLine("its a draw");
 				return Winner;
             }
-            Console.WriteLine($"{Winner} is the winner!");
+            Console.WriteLine($"{Winner.Name} is the winner!");
 				return Winner;
-			
-			//TODO: Complete this method and utilize the rest of the class structure to play the game.
-
-            /*
-             * Complete this method by constructing the logic for the actual playing of Tic Tac Toe. 
-             * 
-             * A few things to get you started:
-            1. A turn consists of a player picking a position on the board with their designated marker. 
-            2. Display the board after every turn to show the most up to date state of the game
-            3. Once a Winner is determined, display the board one final time and return a winner
-
-            Few additional hints:
-                Be sure to keep track of the number of turns that have been taken to determine if a draw is required
-                and make sure that the game continues while there are unmarked spots on the board. 
-
-            Use any and all pre-existing methods in this program to help construct the method logic. 
-             */
+	
 		}
 
 
@@ -98,7 +73,7 @@ namespace Lab04_TicTacToe.Classes
 				new[] {1,4,7},
 				new[] {2,5,8},
 				new[] {3,6,9},
-
+                                  
 				new[] {1,5,9},
 				new[] {3,5,7}
 			};
@@ -115,12 +90,21 @@ namespace Lab04_TicTacToe.Classes
 				string c = Board.GameBoard[p3.Row, p3.Column];
 
 				// TODO:  Determine a winner has been reached. 
-				// return true if a winner has been reached. 
+				// return true if a winner has been reached.
+
+            if(a == b && b == c)
+            {
+                       Winner = (a == "O") ? PlayerOne : PlayerTwo;
+
+					return true;
+            }
+                
 			
 			}
+            return false;
 
-			//return false;
-		}
+
+        }
 
 
 		/// <summary>
